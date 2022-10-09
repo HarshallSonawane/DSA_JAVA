@@ -41,7 +41,7 @@ public class TwoDPrintLikeWave {
     public static void main(String[] args) {
         
         int arr[][] = print(3, 3);
-        //displayArray(3, 3, arr);
+        //displayArray(3, 3, arr); //Normal View
         SineDisplay(3, 3, arr);
     }
 }
