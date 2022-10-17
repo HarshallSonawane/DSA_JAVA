@@ -21,7 +21,7 @@ public class findDuplicate {
                 n = arr[i];
             }
         }
-        System.out.println("Duplicate Element is: " +n);  //Duplicate
+        System.out.println("Duplicate Element is: " +n);  //DuplicateElement
 
 
 
