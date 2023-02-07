@@ -19,7 +19,8 @@ class Solution {
             }else{
                 if(map.containsValue(d)) 
                     return false;
-                    map.put(c, d);
+                    map.put(c, d);  
+                    System.out.println(map);
             }
 
         }
