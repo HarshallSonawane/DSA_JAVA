@@ -8,7 +8,8 @@ public class PermutationSequence {
     public static void main(String[] args) {
         
         ArrayList<String> ans = permutations("", "abc");
-        System.out.println(ans);
+        System.out.println("Permutations: " +ans);
+        System.out.println("No. of Permutations: " +permutationsCount("", "abc"));
     }
 
 
@@ -32,5 +33,25 @@ public class PermutationSequence {
         }
 
         return ans;
+    }
+
+
+    static int permutationsCount(String p,String up){
+
+        if(up.isEmpty()){
+            return 1;
+        }
+
+        char ch = up.charAt(0);
+        int count = 0;
+
+        for(int i=0;i<=p.length();i++){
+
+            String first = p.substring(0,i);
+            String second = p.substring(i,p.length());
+            count = count + (permutationsCount(first + ch + second, up.substring(1)));
+        }
+
+        return count;
     }
 } 
