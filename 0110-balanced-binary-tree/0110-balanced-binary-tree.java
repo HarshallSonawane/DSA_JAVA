@@ -16,24 +16,32 @@
 class Solution {
     public boolean isBalanced(TreeNode root) {
         
-        int leftH,rightH;
         if(root == null){
             return true;
         }
         
-        leftH = Height(root.left);
-        rightH = Height(root.right);
-        if(Math.abs(leftH - rightH)<=1 && isBalanced(root.left) && isBalanced(root.right)){
+        int left = hieght(root.left);
+        int right = hieght(root.right);
+        
+        if(left == -1 || right == -1){
+            return true;
+        }
+        
+        if(Math.abs(left - right) <= 1 && isBalanced(root.left) && isBalanced(root.right)){
             return true;
         }
         return false;
     }
     
-    public int Height(TreeNode root){
+    public int hieght(TreeNode root){
+        
         if(root == null){
             return 0;
         }
         
-        return Math.max(Height(root.left),Height(root.right)) + 1;
+        int left = hieght(root.left);
+        int right = hieght(root.right);
+        
+        return Math.max(left,right) + 1;
     }
 }
