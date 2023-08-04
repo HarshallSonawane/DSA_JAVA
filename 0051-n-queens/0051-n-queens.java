@@ -9,11 +9,11 @@ class Solution {
         }
         
         List<List<String>> ans = new ArrayList<>();
-        nQueen(arr, ans, 0);
+        nQueen(arr, ans, 0, new boolean[n], new boolean[2 * n - 1], new boolean[2 * n - 1]);
         return ans;
     }
     
-    public void nQueen(char[][] arr, List<List<String>> ans, int row){
+    public void nQueen(char[][] arr, List<List<String>> ans, int row, boolean cols[], boolean d1[], boolean d2[]){
         
         if(row == arr.length){
             ans.add(build(arr));
@@ -22,9 +22,15 @@ class Solution {
         
         for(int i=0;i<arr.length;i++){
             
-            if(isSafe(arr,row,i)){
+            if(cols[i] == false && d1[i + row] == false && d2[row - i + arr.length - 1] == false){
                 arr[row][i] = 'Q';
-                nQueen(arr,ans,row+1);
+                cols[i] = true;
+                d1[i + row] = true;
+                d2[row - i + arr.length - 1] = true;
+                nQueen(arr,ans,row+1,cols,d1,d2);
+                cols[i] = false;
+                d1[i + row] = false;
+                d2[row - i + arr.length - 1] = false;
                 arr[row][i] = '.';
             }
         }
