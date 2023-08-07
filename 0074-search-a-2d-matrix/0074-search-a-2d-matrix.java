@@ -7,9 +7,9 @@ class Solution {
             if(arr[i][j] == target){
                 return true;
             }else if(arr[i][j] < target){
-                i++;
+                i++;        //increase row
             }else{
-                j--;
+                j--;        //decrease coloumn
             }
         }
         return false;
