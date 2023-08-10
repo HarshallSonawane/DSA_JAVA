@@ -1,28 +1,36 @@
 class Solution {
-    public int longestPalindromeSubseq(String s) {
-        int n = s.length();
-        int[][] dp = new int[n][n];
-        for (int i[]:dp) {
-            Arrays.fill(i, -1);
-        }
-        return helper(0, n - 1, s, dp);
+    public int longestPalindromeSubseq(String s1) {
+        
+        // String s2 = "";
+        // for(int i=s1.length()-1;i>=0;i--){
+        //     s2 = s2+s1.charAt(i);
+        // }
+        
+        return helper(s1,0,s1.length()-1,new Integer[s1.length()][s1.length()]);
     }
-
-    public int helper(int i, int j, String s, int[][] dp) {
-        if (i > j) {
+    
+    public int helper(String s1, int i, int j, Integer[][] dp){
+        
+        if(i > j){
             return 0;
         }
-        if (i == j) {
+        
+        if(i == j){
             return 1;
         }
-        if (dp[i][j] != -1) {
+        
+        if(dp[i][j] != null){
             return dp[i][j];
         }
-        if (s.charAt(i) == s.charAt(j)) {
-            dp[i][j] = 2 + helper(i + 1, j - 1, s, dp);
-        } else {
-            dp[i][j] = Math.max(helper(i + 1, j, s, dp), helper(i, j - 1, s, dp));
+        
+        int take = 0;
+        if(s1.charAt(i) == s1.charAt(j)){
+            take = 2 + helper(s1,i+1,j-1,dp);
         }
-        return dp[i][j];
+        int dontTake = Math.max(helper(s1,i,j-1,dp), helper(s1,i+1,j,dp));
+        
+        
+        return dp[i][j] = Math.max(take, dontTake);
+         
     }
 }
