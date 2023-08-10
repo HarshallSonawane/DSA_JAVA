@@ -18,11 +18,13 @@ class Solution {
         int factor1 = 0 + LIS(arr, idx+1, prevIdx, dp); //Not consider
         int factor2 = 0;    //consider
         
+        //if its first element or it is an increasing subsequence
         if(prevIdx == -1 || arr[idx] > arr[prevIdx]){
-            factor2 = 1 + LIS(arr, idx+1, idx, dp);
+            
+        //add that count in existing count and check for further references
+            factor2 = 1 + LIS(arr, idx+1, idx, dp); 
         }
         
-       
         
         int ans = Math.max(factor1,factor2);
         if(prevIdx != -1){ 
